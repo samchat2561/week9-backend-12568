@@ -8,4 +8,5 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('register', [AuthController::class, 'register'])->name('register');
+//Method:POST => http://127.0.0.1:8000/api/register
+Route::post('/register', [AuthController::class, 'register'])->name('register');
