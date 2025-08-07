@@ -24,10 +24,10 @@ class AuthController extends Controller
 
         if ($validateUser->fails()) {
             return response()->json([
-                'staus'=> false,
-                'message'=>'Validation error',
+                'staus' => false,
+                'message' => 'Validation error',
                 'errors' => $validateUser->errors()
-            ],422);
+            ], 422);
         }
 
         $user = User::create([
@@ -36,5 +36,11 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ]);
+
+        return response()->json([
+            'staus' => true,
+            'message' => 'Account successfully created.',
+            'user' => $user
+        ],201);
     }
 }
